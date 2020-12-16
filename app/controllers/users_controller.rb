@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def new
-        super
+        user = User.new(username: params[:username], email: params[:email], password: params[:password])
     end
 
     def index
@@ -10,12 +10,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        name = params[:name]
+        username = params[:username]
         email = params[:email]
         password = params[:password]
 
         user = User.new({
-        name: name,
+        username: username,
         email: email,
         password: password
         })
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         user.reload
         sign_in user
         
-        render json: { name: user.name, email: user.email, id: current_user.id}
+        render json: { name: user.username, email: user.email, id: user.id}
         else
         render json: { error: "something went wrong"}, status: 500
         end
@@ -35,10 +35,10 @@ class UsersController < ApplicationController
         
     end
 
-  def current_user_id
-    p session
-    render json: { user_id: User.last.id }
-  end
+#   def current_user_id
+#     p session
+#     render json: { user_id: User.last.id }
+#   end
 
   # GET /resource/edit
   def edit
