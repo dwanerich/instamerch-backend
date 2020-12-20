@@ -18,6 +18,8 @@ require "rails/test_unit/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+RSpotify::authenticate("57e47161e34c42c899f37a7296003532", "b47919cd399644f1975038363bbdb479")
+
 
 module RailsApi
   class Application < Rails::Application
