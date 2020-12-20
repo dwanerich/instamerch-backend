@@ -1,12 +1,17 @@
 class UsersController < ApplicationController
 
-    def new
-        user = User.new(username: params[:username], email: params[:email], password: params[:password])
-    end
-
+    
     def index
         users = User.all
         render json: users
+    end
+
+    def new
+        user = User.new(
+          username: params[:username], 
+          email: params[:email], 
+          password: params[:password]
+        )
     end
 
     def create
@@ -54,8 +59,5 @@ class UsersController < ApplicationController
   def destroy
     super
   end
-
-
-
 
 end

@@ -1,28 +1,28 @@
-class ItemsController < ApplicationController
+class CoversController < ApplicationController
 
     def new
         super
     end
 
     def index
-        Items = Item.all
-        render json: Items
+        covers = Cover.all
+        render json: covers
     end
 
     def create
         title = params[:title]
         img_src = params[:img_src]
 
-        item = Item.new({
+        cover = Cover.new({
         title: title,
         img_src: img_src,
         })
 
-        if item.save!
-        item.reload
+        if cover.save!
+        cover.reload
         sign_in user
         
-        render json: { title: item.title, img_src: item.img_src id: current_user.id}
+        render json: { title: cover.title, img_src: cover.img_src, id: current_user.id}
         else
             render json: { error: "something went wrong"}, status: 500
         end
