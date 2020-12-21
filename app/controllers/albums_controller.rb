@@ -1,7 +1,9 @@
 class AlbumsController < ApplicationController
     def create
-        album = Album.new(name: params["name"],
-            image_url: params["image_url"]
+        album = Album.new(
+            name: params["name"],
+            image_url: params["image_url"],
+            liked_by: params["liked_by"]
         )
 
         if album.save
