@@ -11,4 +11,9 @@ class AlbumsController < ApplicationController
         end
     end
 
+    def index
+        albums = Album.all
+
+        render json: { albums: albums }
+    end
 end
