@@ -12,13 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2020_12_10_013359) do
 
-  create_table "covers", force: :cascade do |t|
-    t.string "title"
-    t.string "img_src"
-    t.integer "user_id"
+  create_table "albums", force: :cascade do |t|
+    t.string "name"
+    t.string "image_url"
+    t.string "liked_by"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_covers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
