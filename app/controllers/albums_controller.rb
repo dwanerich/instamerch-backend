@@ -18,4 +18,10 @@ class AlbumsController < ApplicationController
 
         render json: { albums: albums }
     end
+
+    def destroy
+        album = Album.find(params["album_id"])
+        album.destroy
+        render json: { albums: Album.all}
+    end
 end
